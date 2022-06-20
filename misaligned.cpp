@@ -16,11 +16,11 @@ int printColorMap() {
 
       int returnMinor = strcmp(previousMinorColor, minorColor[i]);
       if (0 == returnMinor) {
-        std::cout<<"Error :: Minor Strings are equal"<<endl;
+        std::cout<<"Error : Minor Strings are equal"<<endl;
         return i * j;
       }
       else {
-        std::cout<<"Succes :: Minor Strings are unequal"<<endl;
+        std::cout<<"Succes : Minor Strings are unequal"<<endl;
       }
       strcpy(previousMinorColor, minorColor[i]);
     }
