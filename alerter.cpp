@@ -1,16 +1,19 @@
 #include <iostream>
 #include <assert.h>
 
+#define ALERT_NOT_REQUIRED      (200)
+#define ALERT_REQUIRED          (500)
+
 int alertFailureCount = 0;
 
 int networkAlertStub(float celcius) {
-    int alertReturn = 200;
-    if (celcius > 200) {
+    int alertReturn = ALERT_NOT_REQUIRED;
+    if (celcius > ALERT_NOT_REQUIRED) {
       std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
       // Return 200 for ok
       // Return 500 for not-ok
       // stub always succeeds and returns 200
-      alertReturn = 500;
+      alertReturn = ALERT_REQUIRED;
     }
     return alertReturn;
 }
@@ -18,7 +21,7 @@ int networkAlertStub(float celcius) {
 void alertInCelcius(float farenheit) {
     float celcius = (farenheit - 32) * 5 / 9;
     int returnCode = networkAlertStub(celcius);
-    if (returnCode != 200) {
+    if (returnCode != ALERT_NOT_REQUIRED) {
         std::cout << "returnCode is : " <<returnCode<<std::endl;
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
@@ -43,5 +46,3 @@ int main() {
     std::cout << "All is well (maybe!)\n";
     return 0;
 }
-
-
