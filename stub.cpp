@@ -2,9 +2,6 @@
 #include <assert.h>
 #include "stub.h"
 
-#define ALERT_NOT_REQUIRED      (200)
-#define ALERT_REQUIRED          (500)
-
 int networkAlertStub(float celcius) {
     int alertReturn = ALERT_NOT_REQUIRED;
     if (celcius > ALERT_NOT_REQUIRED) {
