@@ -8,7 +8,7 @@ using namespace std;
 std::vector< std::string > colorCoderPair;
 
 void getColorPair();
-int printColorMap();
+void printColorMap();
 void testForColorCoderLengh();
 void testForDuplicatesInColorCoder();
 void testColorCoderPair(int pairNumber, std::string expectedColorPair);
@@ -31,7 +31,7 @@ void getColorPair(){
   }
 }
 
-int printColorMap() {
+void printColorMap() {
   getColorPair();
   for(int i=0; i<colorCoderLength; i++) {
     std::cout<< i + 1 << " | " << colorCoderPair[i] << "\n";
@@ -54,7 +54,7 @@ void testColorCoderPair(int pairNumber, std::string expectedColorPair) {
 }
 
 int main() {
-  int result = printColorMap();
+  printColorMap();
   testForColorCoderLengh();
   testForDuplicatesInColorCoder();
   testColorCoderPair(20, "Yellow | Slate");
