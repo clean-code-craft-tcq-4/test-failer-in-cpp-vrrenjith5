@@ -1,36 +1,64 @@
 #include <iostream>
 #include <assert.h>
 #include <string.h>
+#include <vector>
+#include <set>
 
 using namespace std;
+std::vector< std::string > colorCoderPair;
+
+void getColorPair();
+int printColorMap();
+void testForColorCoderLengh();
+void testForDuplicatesInColorCoder();
+void testColorCoderPair(int pairNumber, std::string expectedColorPair);
 
 const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
 const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-char previousMinorColor[] = "defaultMinor";
+int numberOfMajorColors = sizeof(majorColor) / sizeof(majorColor[0]);
+int numberOfMinorColors = sizeof(minorColor) / sizeof(minorColor[0]);
+const int colorCoderLength = numberOfMajorColors * numberOfMinorColors;
 
-int printColorMap() {
-  int i = 0, j = 0;
-  for(i = 0; i < 5; i++) {
-    for(j = 0; j < 5; j++) {
-      std::cout << i * 5 + j << " | " << majorColor[i] << " | " << minorColor[i] << "\n";
-
-      int returnMinor = strcmp(previousMinorColor, minorColor[i]);
-      if (0 == returnMinor) {
-        std::cout<<"Error : Minor Strings are equal"<<endl;
-        return i * j;
-      }
-      else {
-        std::cout<<"Succes : Minor Strings are unequal"<<endl;
-      }
-      strcpy(previousMinorColor, minorColor[i]);
+void getColorPair(){
+  int majorColorIterator = 0, minorColorIterator = 0;
+  for(majorColorIterator = 0; majorColorIterator < numberOfMajorColors; majorColorIterator++) {
+    for(minorColorIterator = 0; minorColorIterator < numberOfMinorColors; minorColorIterator++) {
+      std::string colorPairStr = majorColor[majorColorIterator];
+      colorPairStr += " | ";
+      colorPairStr += minorColor[majorColorIterator];
+      colorCoderPair.push_back(colorPairStr);
     }
   }
-  return i * j;
+}
+
+int printColorMap() {
+  getColorPair();
+  for(int i=0; i<colorCoderLength; i++) {
+    std::cout<< i + 1 << " | " << colorCoderPair[i] << "\n";
+  }
+}
+
+void testForColorCoderLengh() {
+  int actualLength = colorCoderPair.size();
+  assert(actualLength == colorCoderLength);
+}
+
+void testForDuplicatesInColorCoder() {
+  std::set<std::string> s(colorCoderPair.begin(), colorCoderPair.end());
+  assert(s.size() == colorCoderPair.size());
+}
+
+void testColorCoderPair(int pairNumber, std::string expectedColorPair) {
+  int pairNumberInZeroBased = pairNumber - 1;
+  assert(colorCoderPair[pairNumberInZeroBased] == expectedColorPair);
 }
 
 int main() {
   int result = printColorMap();
-  assert(result == 25);
+  testForColorCoderLengh();
+  testForDuplicatesInColorCoder();
+  testColorCoderPair(20, "Yellow | Slate");
+  testColorCoderPair(1, "White | Blue");
   std::cout << "All is well (maybe!)\n";
   return 0;
 }
