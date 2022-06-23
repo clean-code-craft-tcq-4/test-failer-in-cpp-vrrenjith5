@@ -12,6 +12,7 @@ int alertFailureCount = 0;
 void alertInCelcius(float farenheit) {
     float celcius = (farenheit - 32) * 5 / 9;
     //int returnCode = networkAlertStub(celcius);
+    int returnCode  = 0;
     if (returnCode != ALERT_NOT_REQUIRED) {
         std::cout << "returnCode is : " <<returnCode<<std::endl;
         // non-ok response is not an error! Issues happen in life!
