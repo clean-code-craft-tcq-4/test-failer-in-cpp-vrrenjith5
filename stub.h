@@ -8,6 +8,6 @@ int networkAlertStub(float celcius);
 
 /*export API's*/
 
-//extern int networkAlertStub(float celcius);
+extern int networkAlertStub(float celcius);
 
 #endif /*__STUB_H_*/
