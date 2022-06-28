@@ -2,9 +2,6 @@
 #include <assert.h>
 #include "stub.h"
 
-#define ALERT_NOT_REQUIRED      (200)
-#define ALERT_REQUIRED          (500)
-
 int networkAlertStub(float celcius) {
     int alertReturn = ALERT_NOT_REQUIRED;
     if (celcius > ALERT_NOT_REQUIRED) {
@@ -13,6 +10,9 @@ int networkAlertStub(float celcius) {
       // Return 500 for not-ok
       // stub always succeeds and returns 200
       alertReturn = ALERT_REQUIRED;
+    }
+    else{
+      std::cout << "ALERT NOT REQUIRED" <<std::endl;
     }
     return alertReturn;
 }
