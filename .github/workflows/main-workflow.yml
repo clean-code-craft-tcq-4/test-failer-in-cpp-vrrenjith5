@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: tshirts fail
+    - name: tshirts pass
       run: |
         g++ -Wall -Wextra -Werror tshirts.cpp -o tshirts.out
         ./tshirts.out
