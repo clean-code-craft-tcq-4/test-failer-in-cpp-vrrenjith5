@@ -4,8 +4,12 @@
 
 static int alertFailureCount = 0;
 
+float farenheitToCelcius(float farenheit) {
+  return ((farenheit - 32) * 5 / 9);
+}
+
 void alertInCelcius(float farenheit) {
-    float celcius = (farenheit - 32) * 5 / 9;
+    float celcius = farenheitToCelcius(farenheit);
     int returnCode = networkAlertStub(celcius);
     if (returnCode != ALERT_NOT_REQUIRED) {
         // non-ok response is not an error! Issues happen in life!
