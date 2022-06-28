@@ -20,7 +20,7 @@ jobs:
         g++ -Wall -Wextra -Werror misaligned.cpp -o misaligned.out
         ./misaligned.out
 
-    - name: alerter fail
+    - name: alerter
       run: |
         g++ -Wall -Wextra -Werror alerter.cpp -o alerter.out
         ./alerter.out
