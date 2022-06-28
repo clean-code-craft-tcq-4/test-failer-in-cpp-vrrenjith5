@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "stub.h"
 
-int alertFailureCount = 0;
+static int alertFailureCount = 0;
 
 void alertInCelcius(float farenheit) {
     float celcius = (farenheit - 32) * 5 / 9;
@@ -14,7 +14,6 @@ void alertInCelcius(float farenheit) {
         // Add a test below to catch this bug. Alter the stub above, if needed.
         alertFailureCount += 1;
     }
-    std::cout << "returnCode is : " <<returnCode<<std::endl;
 }
 
 int main() {
@@ -23,12 +22,12 @@ int main() {
     alertInCelcius(450.6);
     alertInCelcius(420.6);
     if (alertFailureCount == 3) {
-      std::cout <<" Alerts count is success, count is: "<<alertFailureCount<<std::endl;
+      std::cout <<"Alerts count is success, count is: "<<alertFailureCount<<std::endl;
     }
     else {
-      std::cout <<" Alerts count is failed, count is: "<<alertFailureCount<<std::endl;
+      std::cout <<"Alerts count is failed, count is: "<<alertFailureCount<<std::endl;
     }
     assert(alertFailureCount == 3);
-    std::cout << "All is well (maybe!)\n";
+    std::cout << "All is well\n";
     return 0;
 }
