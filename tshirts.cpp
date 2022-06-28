@@ -5,21 +5,27 @@
 #define LOWER_BOUNDARY_FOR_MEDIUM  (39)
 #define UPPER_BOUNDARY_FOR_MEDIUM  (41)
 #define LOWER_BOUNDARY_FOR_LARGE   (42)
+#define SIZE_ZERO                  (0)
 
+void testForSizeZero();
 void testForSmall();
 void testForMedium();
 void testForLarge();
 
 char size(int cms) {
     char sizeName = '\0';
-    if(cms < 38) {
+    if((cms != SIZE_ZERO)&&(cms <= UPPER_BOUNDARY_FOR_SMALL)) {
         sizeName = 'S';
-    } else if(cms > 38 && cms < 42) {
+    } else if((cms > UPPER_BOUNDARY_FOR_SMALL) && (cms < LOWER_BOUNDARY_FOR_LARGE)) {
         sizeName = 'M';
-    } else if(cms > 42) {
+    } else if(cms >= LOWER_BOUNDARY_FOR_LARGE) {
         sizeName = 'L';
     }
     return sizeName;
+}
+
+void testForSizeZero() {
+  assert(size(0) == '\0');
 }
 
 void testForSmall(){
@@ -42,9 +48,10 @@ void testForLarge() {
 }
 
 int main() {
+    testForSizeZero();
     testForSmall();
     testForMedium();
     testForLarge();
-    std::cout << "All is well (maybe!)\n";
+    std::cout << "All is well\n";
     return 0;
 }
