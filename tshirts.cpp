@@ -31,18 +31,18 @@ void testForSizeZero() {
 void testForSmall(){
   assert(size(UPPER_BOUNDARY_FOR_SMALL -1) == 'S');
   assert(size(UPPER_BOUNDARY_FOR_SMALL) == 'S');
-  assert(size(UPPER_BOUNDARY_FOR_SMALL+1) != 'S');
+  assert(size(UPPER_BOUNDARY_FOR_SMALL+1) == 'M');
 }
 
 void testForMedium() {
-  assert(size(LOWER_BOUNDARY_FOR_MEDIUM -1) != 'M');
+  assert(size(LOWER_BOUNDARY_FOR_MEDIUM -1) == 'S');
   assert(size(LOWER_BOUNDARY_FOR_MEDIUM) == 'M');
   assert(size(UPPER_BOUNDARY_FOR_MEDIUM) == 'M');
-  assert(size(UPPER_BOUNDARY_FOR_MEDIUM +1) != 'M');
+  assert(size(UPPER_BOUNDARY_FOR_MEDIUM +1) == 'L');
 }
 
 void testForLarge() {
-  assert(size(LOWER_BOUNDARY_FOR_LARGE -1) != 'L');
+  assert(size(LOWER_BOUNDARY_FOR_LARGE -1) == 'M');
   assert(size(LOWER_BOUNDARY_FOR_LARGE) == 'L');
   assert(size(LOWER_BOUNDARY_FOR_LARGE +1) == 'L');
 }
